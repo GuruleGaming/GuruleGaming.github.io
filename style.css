@@ -1,4 +1,4 @@
-/* Add to existing CSS */
+/* Add these to the end of your existing style.css */
 
 /* Individual page styles */
 .ghost-header, .item-header {
@@ -42,13 +42,13 @@
     margin-bottom: 10px;
 }
 
-/* Abilities and Strategies Lists */
-.abilities-list, .strategies-list, .questions-list {
+/* Lists */
+.abilities-list, .strategies-list, .questions-list, .effects-list {
     list-style-type: none;
     padding-left: 0;
 }
 
-.abilities-list li, .strategies-list li, .questions-list li {
+.abilities-list li, .strategies-list li, .questions-list li, .effects-list li {
     padding: 12px 15px;
     margin: 8px 0;
     background: rgba(255, 255, 255, 0.05);
@@ -56,7 +56,7 @@
     border-left: 3px solid #0f3460;
 }
 
-/* Wishes styling */
+/* Wishes */
 .wishes-list {
     display: grid;
     gap: 20px;
@@ -100,11 +100,23 @@
     border-left: 3px solid #2196f3;
 }
 
-/* Speed info */
-.speed-info {
+/* Cards grid */
+.cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 15px;
+}
+
+.card-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-item h4 {
+    color: #e94560;
+    margin-bottom: 8px;
 }
 
 /* Sanity costs */
@@ -114,7 +126,7 @@
     gap: 15px;
 }
 
-/* Warning section */
+/* Warning */
 .warning {
     background: rgba(244, 67, 54, 0.1);
     border-left: 4px solid #f44336;
@@ -151,15 +163,6 @@
     text-align: center;
     font-style: italic;
     color: #e94560;
-}
-
-/* Preview styles */
-.ghost-preview, .item-preview, .map-preview, .features-preview {
-    margin: 10px 0;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 6px;
-    font-size: 0.9rem;
 }
 
 /* Card hover effects */
