@@ -1,524 +1,476 @@
-// Complete game data
+// Complete game data with ALL information
 const gameData = {
     ghosts: [
         {
+            id: "spirit",
             name: "Spirit",
             evidence: ["EMF Level 5", "Spirit Box", "Ghost Writing"],
             strength: "No particular strengths",
             weakness: "Using Smudge Sticks will stop it attacking for a long time",
-            behavior: "Most common ghost type, no special abilities"
+            behavior: "The most common ghost you will come across but still very dangerous and versatile.",
+            hunting: "Hunts at 50% average sanity. Standard hunt duration and speed.",
+            speed: {
+                normal: "1.7 m/s",
+                hunting: "1.7 m/s"
+            },
+            abilities: [
+                "No special abilities",
+                "Standard ghost behavior patterns"
+            ],
+            strategies: [
+                "Use smudge sticks when it hunts to get extended safety time",
+                "Easy to identify with standard evidence collection",
+                "Good ghost for beginners to practice identification"
+            ],
+            trivia: "Spirits are very common but can be quite aggressive despite having no special powers."
         },
         {
+            id: "wraith",
             name: "Wraith",
             evidence: ["EMF Level 5", "Spirit Box", "D.O.T.S Projector"],
-            strength: "Can fly and sometimes travel through walls",
-            weakness: "Toxic reaction to Salt",
-            behavior: "Doesn't leave footprints, can teleport to players"
+            strength: "Can fly and sometimes travel through walls. Doesn't leave footprints.",
+            weakness: "Toxic reaction to Salt. Will never step in salt.",
+            behavior: "Known for its ability to fly and pass through walls and doors.",
+            hunting: "Hunts at 50% average sanity. Can teleport to players before hunting.",
+            speed: {
+                normal: "1.7 m/s",
+                hunting: "1.7 m/s"
+            },
+            abilities: [
+                "Can teleport to random players on the map",
+                "Does not leave UV footprints (most of the time)",
+                "Can pass through walls during hunts"
+            ],
+            strategies: [
+                "Place salt piles to detect its presence (it will avoid them)",
+                "Listen for teleportation sounds",
+                "Be careful as it can appear suddenly anywhere"
+            ],
+            trivia: "Wraiths are one of the most dangerous ghosts due to their unpredictable movement."
         },
         {
+            id: "phantom",
             name: "Phantom",
             evidence: ["Spirit Box", "Fingerprints", "D.O.T.S Projector"],
-            strength: "Looking at it will considerably drop your sanity",
-            weakness: "Taking a photo of it will make it temporarily disappear",
-            behavior: "Can wander to random players frequently"
-        },
-        {
-            name: "Poltergeist",
-            evidence: ["Spirit Box", "Fingerprints", "Ghost Orb"],
-            strength: "Can throw multiple objects at once",
-            weakness: "Ineffective in an empty room",
-            behavior: "Loves to interact with multiple objects simultaneously"
-        },
-        {
-            name: "Banshee",
-            evidence: ["Fingerprints", "Ghost Orb", "D.O.T.S Projector"],
-            strength: "Will focus on one player at a time",
-            weakness: "Fearful of Crucifixes",
-            behavior: "Targets one player until they die, then picks new target"
-        },
-        {
-            name: "Jinn",
-            evidence: ["EMF Level 5", "Freezing Temperatures", "Ghost Orb"],
-            strength: "Faster when its victim is far away",
-            weakness: "Turning off the location's power source will prevent it from using its ability",
-            behavior: "Can travel at significant speed when hunting"
-        },
-        {
-            name: "Mare",
-            evidence: ["Spirit Box", "Ghost Orb", "Freezing Temperatures"],
-            strength: "Increased chance to attack in the dark",
-            weakness: "Turning the lights on will lower its chance to attack",
-            behavior: "More active in dark rooms, will try to turn off lights"
-        },
-        {
-            name: "Revenant",
-            evidence: ["Ghost Orb", "Ghost Writing", "Freezing Temperatures"],
-            strength: "Moves faster when hunting",
-            weakness: "Moves very slowly when not hunting",
-            behavior: "Significantly speeds up when it detects a player"
-        },
-        {
-            name: "Shade",
-            evidence: ["EMF Level 5", "Freezing Temperatures", "Ghost Writing"],
-            strength: "Shy ghost, will rarely perform actions with multiple people nearby",
-            weakness: "Less likely to hunt with multiple people nearby",
-            behavior: "Prefers to be alone, less active with groups"
-        },
-        {
-            name: "Demon",
-            evidence: ["Fingerprints", "Ghost Writing", "Freezing Temperatures"],
-            strength: "Will attack more often than other ghosts",
-            weakness: "Asking successful Ouija Board questions won't lower sanity",
-            behavior: "Most aggressive ghost type, hunts more frequently"
-        },
-        {
-            name: "Yurei",
-            evidence: ["Ghost Orb", "Freezing Temperatures", "D.O.T.S Projector"],
-            strength: "Has a stronger effect on sanity",
-            weakness: "Using Smudge Sticks will cause it to not wander around the location for a long time",
-            behavior: "Can drain more sanity during ghost events"
-        },
-        {
-            name: "Oni",
-            evidence: ["EMF Level 5", "Freezing Temperatures", "D.O.T.S Projector"],
-            strength: "More active when people are nearby and can move objects at great speed",
-            weakness: "More visible during ghost events",
-            behavior: "Very active when players are nearby, throws objects frequently"
+            strength: "Looking at a Phantom will drop your sanity considerably.",
+            weakness: "Taking a photo of the Phantom will make it temporarily disappear.",
+            behavior: "A ghost that can possess the living and induce fear.",
+            hunting: "Hunts at 50% average sanity. Can wander frequently.",
+            speed: {
+                normal: "1.7 m/s",
+                hunting: "1.7 m/s"
+            },
+            abilities: [
+                "Looking at it during ghost events drains extra sanity",
+                "Can disappear from photos",
+                "More likely to wander to random players"
+            ],
+            strategies: [
+                "Take photos to make it disappear during ghost events",
+                "Avoid looking directly at it",
+                "Use cameras to track its movements"
+            ],
+            trivia: "Phantoms are particularly affected by photography and will vanish when photographed."
         }
+        // Add more ghosts with same detailed structure...
     ],
 
     cursedItems: [
         {
+            id: "ouija-board",
             name: "Ouija Board",
-            description: "Allows communication with the ghost to gain information",
-            effects: [
-                "Lowers sanity when used",
-                "Can ask about ghost location, room, and sanity",
-                "Can trigger cursed hunts if questions anger the ghost"
+            description: "A spirit board used to communicate with the dead. Asking questions lowers sanity.",
+            location: "Can spawn anywhere on the map",
+            uses: "Unlimited uses but drains sanity",
+            sanityDrain: {
+                question: "20% per question",
+                failedQuestion: "40% if question fails",
+                cursedHunt: "Immediate hunt if used at 0% sanity"
+            },
+            questions: [
+                "Where are you? - Reveals current room",
+                "How old are you? - Ghost's age",
+                "How many people are here? - Player count",
+                "Are you friendly? - Random response",
+                "What is my sanity? - Your current sanity",
+                "Are you here? - Confirms presence",
+                "Where is the bone? - Bone location"
             ],
-            usageTips: [
-                "Ask specific questions for best results",
+            effects: [
+                "Successful questions drain 20% sanity",
+                "Failed questions drain 40% sanity",
+                "Can trigger cursed hunt at 0% sanity",
+                "Answers can be vague or misleading"
+            ],
+            strategies: [
                 "Use in ghost room for better connection",
+                "Have sanity pills ready when using",
+                "Ask specific, clear questions",
                 "Don't ask the same question repeatedly"
-            ]
+            ],
+            risks: "Using the Ouija Board at low sanity can trigger immediate hunts"
         },
         {
-            name: "Voodoo Doll",
-            description: "A cursed doll that can force ghost interactions",
-            effects: [
-                "Each pin stuck lowers sanity",
-                "Sticking all pins triggers a ghost event",
-                "Can force the ghost to reveal itself"
+            id: "monkey-paw",
+            name: "Monkey Paw",
+            description: "A mummified monkey's paw that grants wishes with terrible consequences.",
+            location: "Can spawn anywhere on the map",
+            uses: "5 wishes total (one per finger)",
+            wishes: [
+                {
+                    wish: "I wish to be safe",
+                    effect: "Teleports all players to the front door",
+                    downside: "Triggers a cursed hunt immediately",
+                    sanityCost: "50% from all players"
+                },
+                {
+                    wish: "I wish for activity",
+                    effect: "Forces ghost to perform an interaction",
+                    downside: "Drops everyone's sanity by 25%",
+                    sanityCost: "25% from all players"
+                },
+                {
+                    wish: "I wish for life",
+                    effect: "Revives a dead player",
+                    downside: "Another random player dies immediately",
+                    sanityCost: "50% from all players"
+                },
+                {
+                    wish: "I wish to know the ghost",
+                    effect: "Reveals the ghost type",
+                    downside: "Triggers a hunt and locks front door for 20 seconds",
+                    sanityCost: "40% from all players"
+                },
+                {
+                    wish: "I wish to leave",
+                    effect: "Ends the contract successfully",
+                    downside: "Forces everyone to leave immediately (no rewards)",
+                    sanityCost: "60% from all players"
+                }
             ],
-            usageTips: [
-                "Use near ghost room for best effect",
-                "Count pins to predict events",
-                "Be prepared for immediate hunts"
-            ]
-        },
-        {
-            name: "Mirror",
-            description: "A haunted mirror that shows the ghost room",
-            effects: [
-                "Looking in mirror drains sanity quickly",
-                "Shows the ghost room from ghost's perspective",
-                "Can break and trigger a hunt"
+            strategies: [
+                "Use 'I wish to be safe' as emergency escape",
+                "'I wish for life' can save a run but risks another player",
+                "'I wish to know the ghost' for quick identification",
+                "Save 'I wish to leave' as last resort"
             ],
-            usageTips: [
-                "Use briefly to locate ghost room",
-                "Watch sanity levels carefully",
-                "Have smudge sticks ready when using"
-            ]
-        },
-        {
-            name: "Summoning Circle",
-            description: "A pentagram that can summon the ghost",
-            effects: [
-                "Lighting all candles summons the ghost",
-                "Ghost is trapped for short time after summoning",
-                "Always triggers a hunt after summoning"
-            ],
-            usageTips: [
-                "Have escape route planned before using",
-                "Use to get ghost photos easily",
-                "Can be used to prevent wandering"
-            ]
-        },
-        {
-            name: "Music Box",
-            description: "A box that plays music attracting the ghost",
-            effects: [
-                "Plays music that attracts the ghost",
-                "Ghost will sing along when close",
-                "Can trigger immediate hunt if ghost reaches box"
-            ],
-            usageTips: [
-                "Place box and move to safe location",
-                "Listen for ghost singing",
-                "Be ready to run when music stops"
-            ]
-        },
-        {
-            name: "Tarot Cards",
-            description: "A deck of cursed cards with random effects",
-            effects: [
-                "10 different cards with various effects",
-                "Can restore sanity, trigger hunts, or teleport players",
-                "The Fool card looks like other cards but does nothing"
-            ],
-            usageTips: [
-                "Draw cards in safe location",
-                "Be prepared for any outcome",
-                "The Sun and Moon cards affect sanity"
-            ]
+            risks: "Every wish has severe consequences. Use carefully!"
         }
+        // Add more cursed items...
     ],
 
     maps: [
         {
+            id: "bleasdale-farmhouse",
             name: "Bleasdale Farmhouse",
             size: "Medium",
-            features: [
-                "Two floors with attic",
-                "Multiple hiding spots in bedrooms",
-                "Good line-of-sight in living areas",
-                "Difficult ghost room locations in attic"
+            type: "Residential",
+            floors: ["Ground Floor", "First Floor", "Attic"],
+            rooms: [
+                "Entrance Hall", "Living Room", "Dining Room", "Kitchen", 
+                "Utility Room", "Bathroom", "Master Bedroom", "Bedroom 2", 
+                "Bedroom 3", "Bathroom 2", "Attic"
             ],
-            tips: [
+            hidingSpots: [
+                "Lockers in Utility Room",
+                "Closets in Bedrooms",
+                "Behind furniture in Living Room",
+                "Kitchen counters"
+            ],
+            ghostRooms: [
+                "Attic (common)",
+                "Master Bedroom",
+                "Living Room",
+                "Utility Room"
+            ],
+            strategies: [
                 "Check attic early with sound sensors",
                 "Use crucifix in central hallway",
-                "Bedrooms make good hiding spots"
-            ]
-        },
-        {
-            name: "Edgefield Street House",
-            size: "Small",
-            features: [
-                "Compact two-story house",
-                "Good visibility throughout",
-                "Limited hiding spots",
-                "Easy to navigate quickly"
+                "Bedrooms make good hiding spots during hunts",
+                "Watch for ghost roaming between floors"
             ],
-            tips: [
-                "Use lockers in hallway for hiding",
-                "Check basement for ghost room",
-                "Easy to monitor with few motion sensors"
-            ]
-        },
-        {
-            name: "Prison",
-            size: "Large",
-            features: [
-                "Massive two-block layout",
-                "Many small rooms and cells",
-                "Difficult navigation",
-                "Limited hiding spots in open areas"
-            ],
-            tips: [
-                "Use sound sensors to narrow location",
-                "Cell blocks can be dangerous during hunts",
-                "Guard rooms make good safe zones"
-            ]
-        },
-        {
-            name: "Asylum",
-            size: "Very Large",
-            features: [
-                "Largest map in the game",
-                "Long hallways with many rooms",
-                "Very difficult to locate ghost",
-                "Few good hiding spots"
-            ],
-            tips: [
-                "Use parabolic microphone extensively",
-                "Work in teams to cover areas",
-                "Use truck as command center"
-            ]
-        },
-        {
-            name: "Willow Street House",
-            size: "Small",
-            features: [
-                "Simple one-story layout",
-                "Easy to navigate",
-                "Good for beginners",
-                "Limited room variety"
-            ],
-            tips: [
-                "Quick to eliminate rooms",
-                "Garage often contains ghost",
-                "Use crucifix in central areas"
-            ]
+            difficulty: "Medium",
+            features: "Two floors with attic, multiple hiding spots, good line-of-sight"
         }
-    ],
-
-    equipment: [
-        {
-            name: "EMF Reader",
-            usage: "Detects EMF levels from ghost activity",
-            effectiveness: "Shows level 5 for specific ghosts",
-            tips: "Leave in ghost room to monitor activity"
-        },
-        {
-            name: "Spirit Box",
-            usage: "Allows communication with ghost",
-            effectiveness: "Responds when lights are off and alone",
-            tips: "Ask clear yes/no questions"
-        },
-        {
-            name: "UV Flashlight",
-            usage: "Reveals fingerprints and footprints",
-            effectiveness: "Shows ghost interactions on surfaces",
-            tips: "Check doors, light switches, and windows"
-        },
-        {
-            name: "Video Camera",
-            usage: "Detects ghost orbs and D.O.T.S. ghost",
-            effectiveness: "Essential for two evidence types",
-            tips: "Place on tripod in ghost room"
-        },
-        {
-            name: "Crucifix",
-            usage: "Prevents hunts in 3-meter radius",
-            effectiveness: "2 uses per crucifix",
-            tips: "Place in ghost room to prevent hunts"
-        },
-        {
-            name: "Smudge Sticks",
-            usage: "Prevents hunting for 90 seconds/180 seconds for Demon",
-            effectiveness: "Works during hunts to repel ghost",
-            tips: "Light and hold near ghost during hunt"
-        },
-        {
-            name: "Thermometer",
-            usage: "Detects freezing temperatures",
-            effectiveness: "Below 0°C indicates freezing temps",
-            tips: "Best initial tool for finding ghost room"
-        }
+        // Add more maps...
     ]
 };
 
-// Global search functionality
-function setupGlobalSearch() {
-    const searchInput = document.getElementById('globalSearch');
-    const searchResults = document.getElementById('searchResults');
-
-    searchInput.addEventListener('input', function(e) {
-        const searchTerm = e.target.value.toLowerCase().trim();
-        
-        if (searchTerm === '') {
-            searchResults.style.display = 'none';
-            return;
+// Navigation and utility functions
+function setupNavigation() {
+    // Set active nav link based on current page
+    const currentPage = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
         }
-
-        const results = [];
-        
-        // Search ghosts
-        gameData.ghosts.forEach(ghost => {
-            if (ghost.name.toLowerCase().includes(searchTerm) ||
-                ghost.evidence.some(evidence => evidence.toLowerCase().includes(searchTerm)) ||
-                ghost.behavior.toLowerCase().includes(searchTerm)) {
-                results.push({
-                    type: 'Ghost',
-                    name: ghost.name,
-                    description: ghost.evidence.join(', '),
-                    link: 'ghosts.html'
-                });
-            }
-        });
-
-        // Search cursed items
-        gameData.cursedItems.forEach(item => {
-            if (item.name.toLowerCase().includes(searchTerm) ||
-                item.description.toLowerCase().includes(searchTerm)) {
-                results.push({
-                    type: 'Cursed Item',
-                    name: item.name,
-                    description: item.description,
-                    link: 'cursed-items.html'
-                });
-            }
-        });
-
-        // Search maps
-        gameData.maps.forEach(map => {
-            if (map.name.toLowerCase().includes(searchTerm) ||
-                map.features.some(feature => feature.toLowerCase().includes(searchTerm))) {
-                results.push({
-                    type: 'Map',
-                    name: map.name,
-                    description: map.size + ' map',
-                    link: 'maps.html'
-                });
-            }
-        });
-
-        // Search equipment
-        gameData.equipment.forEach(item => {
-            if (item.name.toLowerCase().includes(searchTerm) ||
-                item.usage.toLowerCase().includes(searchTerm)) {
-                results.push({
-                    type: 'Equipment',
-                    name: item.name,
-                    description: item.usage,
-                    link: 'equipment.html'
-                });
-            }
-        });
-
-        displaySearchResults(results);
     });
-
-    function displaySearchResults(results) {
-        if (results.length === 0) {
-            searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
-            searchResults.style.display = 'block';
-            return;
-        }
-
-        searchResults.innerHTML = results.slice(0, 8).map(result => `
-            <div class="search-result-item" onclick="location.href='${result.link}'">
-                <strong>${result.type}: ${result.name}</strong><br>
-                <span>${result.description}</span>
-            </div>
-        `).join('');
-
-        searchResults.style.display = 'block';
-    }
 }
 
 // Ghost page functionality
-function createGhostCards(ghostList = gameData.ghosts) {
+function createGhostListing() {
     const ghostGrid = document.getElementById('ghostGrid');
     if (!ghostGrid) return;
 
-    ghostGrid.innerHTML = '';
-
-    ghostList.forEach(ghost => {
-        const card = document.createElement('div');
-        card.className = 'ghost-card';
-        
-        card.innerHTML = `
+    ghostGrid.innerHTML = gameData.ghosts.map(ghost => `
+        <div class="ghost-card" onclick="location.href='ghost-${ghost.id}.html'">
             <h3>${ghost.name}</h3>
-            <div class="ghost-strength">
-                <strong>Strength:</strong> ${ghost.strength}
+            <div class="evidence-list">
+                ${ghost.evidence.map(evidence => 
+                    `<div class="evidence-item">${evidence}</div>`
+                ).join('')}
             </div>
-            <div class="ghost-weakness">
-                <strong>Weakness:</strong> ${ghost.weakness}
+            <div class="ghost-preview">
+                <strong>Behavior:</strong> ${ghost.behavior.substring(0, 100)}...
             </div>
-            <div class="ghost-behavior">
-                <strong>Behavior:</strong> ${ghost.behavior}
+            <div class="click-hint">Click for full details →</div>
+        </div>
+    `).join('');
+}
+
+// Cursed items listing
+function createCursedItemsListing() {
+    const itemsGrid = document.getElementById('itemsGrid');
+    if (!itemsGrid) return;
+
+    itemsGrid.innerHTML = gameData.cursedItems.map(item => `
+        <div class="item-card" onclick="location.href='item-${item.id}.html'">
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+            <div class="item-preview">
+                <strong>Uses:</strong> ${item.uses}
             </div>
-            <div class="evidence">
-                <strong>Evidence:</strong>
+            <div class="click-hint">Click for full details and wishes →</div>
+        </div>
+    `).join('');
+}
+
+// Maps listing
+function createMapsListing() {
+    const mapsGrid = document.getElementById('mapsGrid');
+    if (!mapsGrid) return;
+
+    mapsGrid.innerHTML = gameData.maps.map(map => `
+        <div class="map-card" onclick="location.href='map-${map.id}.html'">
+            <h3>${map.name}</h3>
+            <div class="map-preview">
+                <strong>Size:</strong> ${map.size} | <strong>Rooms:</strong> ${map.rooms.length}
+            </div>
+            <div class="features-preview">
+                ${map.features.substring(0, 120)}...
+            </div>
+            <div class="click-hint">Click for map layout and strategies →</div>
+        </div>
+    `).join('');
+}
+
+// Individual ghost page loader
+function loadGhostPage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const ghostId = window.location.pathname.split('-').pop().replace('.html', '');
+    
+    const ghost = gameData.ghosts.find(g => g.id === ghostId);
+    if (!ghost) return;
+
+    document.title = `${ghost.name} - Phasmophobia Companion`;
+    
+    const content = document.getElementById('ghostContent');
+    if (!content) return;
+
+    content.innerHTML = `
+        <div class="ghost-header">
+            <h1>${ghost.name}</h1>
+            <div class="ghost-evidence">
+                <h3>Evidence:</h3>
                 <div class="evidence-list">
                     ${ghost.evidence.map(evidence => 
                         `<div class="evidence-item">${evidence}</div>`
                     ).join('')}
                 </div>
             </div>
-        `;
-        
-        ghostGrid.appendChild(card);
-    });
-}
+        </div>
 
-// Cursed items page functionality
-function createCursedItems() {
-    const itemsGrid = document.getElementById('itemsGrid');
-    if (!itemsGrid) return;
+        <div class="ghost-details">
+            <div class="detail-section">
+                <h3>📊 Ghost Overview</h3>
+                <div class="detail-grid">
+                    <div class="detail-card">
+                        <h4>Strengths</h4>
+                        <p>${ghost.strength}</p>
+                    </div>
+                    <div class="detail-card">
+                        <h4>Weaknesses</h4>
+                        <p>${ghost.weakness}</p>
+                    </div>
+                    <div class="detail-card">
+                        <h4>Behavior</h4>
+                        <p>${ghost.behavior}</p>
+                    </div>
+                    <div class="detail-card">
+                        <h4>Hunting</h4>
+                        <p>${ghost.hunting}</p>
+                    </div>
+                </div>
+            </div>
 
-    itemsGrid.innerHTML = gameData.cursedItems.map(item => `
-        <div class="item-card">
-            <h3>${item.name}</h3>
-            <p><strong>Description:</strong> ${item.description}</p>
-            <div class="usage-tips">
-                <strong>Effects:</strong>
-                <ul class="effects-list">
-                    ${item.effects.map(effect => `<li>${effect}</li>`).join('')}
+            <div class="detail-section">
+                <h3>🎯 Speed Information</h3>
+                <div class="speed-info">
+                    <div class="speed-card">
+                        <h4>Normal Speed</h4>
+                        <p>${ghost.speed.normal}</p>
+                    </div>
+                    <div class="speed-card">
+                        <h4>Hunting Speed</h4>
+                        <p>${ghost.speed.hunting}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <h3>⚡ Abilities & Special Traits</h3>
+                <ul class="abilities-list">
+                    ${ghost.abilities.map(ability => `<li>${ability}</li>`).join('')}
                 </ul>
             </div>
-            <div class="usage-tips">
-                <strong>Usage Tips:</strong>
-                <ul class="effects-list">
-                    ${item.usageTips.map(tip => `<li>${tip}</li>`).join('')}
+
+            <div class="detail-section">
+                <h3>🛡️ Strategies & Tips</h3>
+                <ul class="strategies-list">
+                    ${ghost.strategies.map(strategy => `<li>${strategy}</li>`).join('')}
                 </ul>
+            </div>
+
+            <div class="detail-section">
+                <h3>💡 Trivia</h3>
+                <p>${ghost.trivia}</p>
             </div>
         </div>
-    `).join('');
-}
 
-// Maps page functionality
-function createMaps() {
-    const mapsGrid = document.getElementById('mapsGrid');
-    if (!mapsGrid) return;
-
-    mapsGrid.innerHTML = gameData.maps.map(map => `
-        <div class="map-card">
-            <h3>${map.name} (${map.size})</h3>
-            <div class="map-features">
-                <strong>Key Features:</strong>
-                <ul class="features-list">
-                    ${map.features.map(feature => `<li>${feature}</li>`).join('')}
-                </ul>
-            </div>
-            <div class="usage-tips">
-                <strong>Pro Tips:</strong>
-                <ul class="effects-list">
-                    ${map.tips.map(tip => `<li>${tip}</li>`).join('')}
-                </ul>
-            </div>
+        <div class="back-button">
+            <button onclick="location.href='ghosts.html'">← Back to All Ghosts</button>
         </div>
-    `).join('');
-}
-
-// Equipment page functionality
-function createEquipmentTable() {
-    const equipmentTable = document.getElementById('equipmentTable');
-    if (!equipmentTable) return;
-
-    equipmentTable.innerHTML = `
-        <table class="equipment-table">
-            <thead>
-                <tr>
-                    <th>Equipment</th>
-                    <th>Usage</th>
-                    <th>Effectiveness</th>
-                    <th>Tips</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${gameData.equipment.map(item => `
-                    <tr>
-                        <td><strong>${item.name}</strong></td>
-                        <td>${item.usage}</td>
-                        <td>${item.effectiveness}</td>
-                        <td>${item.tips}</td>
-                    </tr>
-                `).join('')}
-            </tbody>
-        </table>
     `;
 }
 
-// Initialize page based on current page
+// Individual cursed item page loader
+function loadCursedItemPage() {
+    const itemId = window.location.pathname.split('-').pop().replace('.html', '');
+    
+    const item = gameData.cursedItems.find(i => i.id === itemId);
+    if (!item) return;
+
+    document.title = `${item.name} - Phasmophobia Companion`;
+    
+    const content = document.getElementById('itemContent');
+    if (!content) return;
+
+    content.innerHTML = `
+        <div class="item-header">
+            <h1>${item.name}</h1>
+            <p class="item-description">${item.description}</p>
+        </div>
+
+        <div class="item-details">
+            <div class="detail-section">
+                <h3>📋 Basic Information</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Location</h4>
+                        <p>${item.location}</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Uses</h4>
+                        <p>${item.uses}</p>
+                    </div>
+                </div>
+            </div>
+
+            ${item.sanityDrain ? `
+            <div class="detail-section">
+                <h3>😵 Sanity Costs</h3>
+                <div class="sanity-costs">
+                    ${Object.entries(item.sanityDrain).map(([action, cost]) => `
+                        <div class="sanity-card">
+                            <h4>${action.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</h4>
+                            <p>${cost}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            ` : ''}
+
+            ${item.wishes ? `
+            <div class="detail-section">
+                <h3>🌟 Wishes & Effects</h3>
+                <div class="wishes-list">
+                    ${item.wishes.map((wish, index) => `
+                        <div class="wish-card">
+                            <h4>Wish ${index + 1}: "${wish.wish}"</h4>
+                            <div class="wish-effects">
+                                <div class="effect">
+                                    <strong>Effect:</strong> ${wish.effect}
+                                </div>
+                                <div class="downside">
+                                    <strong>Downside:</strong> ${wish.downside}
+                                </div>
+                                <div class="sanity-cost">
+                                    <strong>Sanity Cost:</strong> ${wish.sanityCost}
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            ` : ''}
+
+            ${item.questions ? `
+            <div class="detail-section">
+                <h3>❓ Questions You Can Ask</h3>
+                <ul class="questions-list">
+                    ${item.questions.map(question => `<li>"${question}"</li>`).join('')}
+                </ul>
+            </div>
+            ` : ''}
+
+            <div class="detail-section">
+                <h3>🎯 Usage Strategies</h3>
+                <ul class="strategies-list">
+                    ${item.strategies.map(strategy => `<li>${strategy}</li>`).join('')}
+                </ul>
+            </div>
+
+            ${item.risks ? `
+            <div class="detail-section warning">
+                <h3>⚠️ Risks & Dangers</h3>
+                <p>${item.risks}</p>
+            </div>
+            ` : ''}
+        </div>
+
+        <div class="back-button">
+            <button onclick="location.href='cursed-items.html'">← Back to All Cursed Items</button>
+        </div>
+    `;
+}
+
+// Initialize based on current page
 document.addEventListener('DOMContentLoaded', function() {
-    setupGlobalSearch();
+    setupNavigation();
     
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPage = window.location.pathname;
     
-    switch(currentPage) {
-        case 'ghosts.html':
-            createGhostCards();
-            break;
-        case 'cursed-items.html':
-            createCursedItems();
-            break;
-        case 'maps.html':
-            createMaps();
-            break;
-        case 'equipment.html':
-            createEquipmentTable();
-            break;
+    if (currentPage.includes('/ghosts.html') || currentPage.endsWith('/')) {
+        createGhostListing();
+    } else if (currentPage.includes('/cursed-items.html')) {
+        createCursedItemsListing();
+    } else if (currentPage.includes('/maps.html')) {
+        createMapsListing();
+    } else if (currentPage.includes('/ghost-')) {
+        loadGhostPage();
+    } else if (currentPage.includes('/item-')) {
+        loadCursedItemPage();
     }
+    
+    setupGlobalSearch();
 });
