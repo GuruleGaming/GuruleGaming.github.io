@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost Database - Phasmophobia Companion</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>👻 Phasmophobia Companion</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="ghosts.html" class="nav-link active">Ghosts</a>
+                <a href="cursed-items.html" class="nav-link">Cursed Items</a>
+                <a href="maps.html" class="nav-link">Maps</a>
+                <a href="equipment.html" class="nav-link">Equipment</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="hero">
+            <h1>Ghost Database</h1>
+            <p>Complete guide to all ghost types, evidence, and behaviors</p>
+        </header>
+
+        <div class="search-section">
+            <input type="text" id="ghostSearch" placeholder="Search ghosts by name, evidence, or behavior...">
+        </div>
+
+        <div class="ghost-grid" id="ghostGrid">
+            <!-- Ghost cards will be generated here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Ghost-specific search
+        document.getElementById('ghostSearch')?.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredGhosts = gameData.ghosts.filter(ghost => 
+                ghost.name.toLowerCase().includes(searchTerm) ||
+                ghost.evidence.some(evidence => evidence.toLowerCase().includes(searchTerm)) ||
+                ghost.behavior.toLowerCase().includes(searchTerm) ||
+                ghost.strength.toLowerCase().includes(searchTerm) ||
+                ghost.weakness.toLowerCase().includes(searchTerm)
+            );
+            createGhostCards(filteredGhosts);
+        });
+    </script>
+</body>
+</html>
